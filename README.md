@@ -1,10 +1,13 @@
 "# Socket-Framework" 
 
 `Requirments :-
-1> Gradle (6.5)
+	
+	1> Gradle (6.5)
 
 `Sample server side code
+	
 	// import jar file from server\build\libs\* and common\build\libs\*
+	
 	@Path("/eg1")
 	class eg1
 	{
@@ -14,7 +17,7 @@
 			return p1*p1;
 		}
 	}
-
+	
 	public static void main(String[] args)
 	{
 		SFrameworkServer server = new SFrameworkServer();
@@ -23,7 +26,9 @@
 	}
 
 `Sample client side code
+	
 	// import jar file from server\build\libs\* and client\build\libs\*
+	
 	class client
 	{
 		public static void main(String[] aa)
@@ -39,6 +44,7 @@
 			}
 		}
 	}
+
 
 **to run your code take respective jar files in classpath**
 
