@@ -8,35 +8,40 @@
 	
 	// import jar file from server\build\libs\* and common\build\libs\*
 	
-	@Path("/eg1")
-	class eg1
+	import com.sframework.server.*;
+	import com.sframework.server.annotations.*;
+	@Path("/server")
+	public class server
 	{
 		@Path("/fun")
-		public int fun(int p1)
+		public String fun(String p1)
 		{
-			return p1*p1;
+			if(p1.equalsIgnoreCase("What is my name?")) return "Nitin";
+			else return "No Data!";
 		}
-	}
-	
-	public static void main(String[] args)
-	{
-		SFrameworkServer server = new SFrameworkServer();
-		server.registerClass(eg1.class);
-		server.start();
+
+		public static void main(String[] args)
+		{
+			SFrameworkServer server = new SFrameworkServer();
+			server.registerClass(server.class);
+			server.start();
+		}
 	}
 
 `Sample client side code
 	
-	// import jar file from server\build\libs\* and client\build\libs\*
+	// import jar file from common\build\libs\* and client\build\libs\*
 	
-	class client
+	import com.sframework.client.*;
+	import com.sframework.common.exceptions.*;
+	public class client
 	{
 		public static void main(String[] aa)
 		{
 			try
 			{
 				SFrameworkClient client = new SFrameworkClient();
-				int ans = (String)client.execute("/eg1/fun",aa[0]); // "/class_annotation/function_annnotation" , parameters for that function
+				String ans = (String)client.execute("/server/fun",aa[0]); // "/class_annotation/function_annnotation" , parameters for that function
 				System.out.println(ans);
 			}catch(Throwable t)
 			{
@@ -44,7 +49,6 @@
 			}
 		}
 	}
-
 
 **to run your code take respective jar files in classpath**
 
